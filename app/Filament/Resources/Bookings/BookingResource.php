@@ -22,8 +22,12 @@ class BookingResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::CalendarDays;
 
-
     protected static ?string $recordTitleAttribute = 'Booking';
+
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
+    }
 
     public static function form(Schema $schema): Schema
     {
@@ -52,8 +56,8 @@ class BookingResource extends Resource
         return [
             'index' => ListBookings::route('/'),
             'create' => CreateBooking::route('/create'),
-            'view' => ViewBooking::route('/{record}'),
-            'edit' => EditBooking::route('/{record}/edit'),
+            // 'view' => ViewBooking::route('/{record}'),
+            // 'edit' => EditBooking::route('/{record}/edit'),
         ];
     }
 }

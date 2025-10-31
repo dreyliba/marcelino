@@ -2,10 +2,10 @@
 
 namespace App\Filament\Resources\Guests\Pages;
 
-use App\Filament\Resources\Guests\GuestResource;
-use Filament\Actions\DeleteAction;
 use Filament\Actions\ViewAction;
+use Filament\Actions\DeleteAction;
 use Filament\Resources\Pages\EditRecord;
+use App\Filament\Resources\Guests\GuestResource;
 
 class EditGuest extends EditRecord
 {
@@ -14,8 +14,8 @@ class EditGuest extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
-            ViewAction::make(),
-            DeleteAction::make(),
+            ViewAction::make()->hidden(),
+            DeleteAction::make()->hidden(),
         ];
     }
 }

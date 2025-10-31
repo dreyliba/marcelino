@@ -2,10 +2,10 @@
 
 namespace App\Filament\Resources\Bookings\Pages;
 
-use App\Filament\Resources\Bookings\BookingResource;
-use Filament\Actions\DeleteAction;
 use Filament\Actions\ViewAction;
+use Filament\Actions\DeleteAction;
 use Filament\Resources\Pages\EditRecord;
+use App\Filament\Resources\Bookings\BookingResource;
 
 class EditBooking extends EditRecord
 {
@@ -14,8 +14,8 @@ class EditBooking extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
-            ViewAction::make(),
-            DeleteAction::make(),
+            ViewAction::make()->hidden(),
+            DeleteAction::make()->hidden(),
         ];
     }
 }

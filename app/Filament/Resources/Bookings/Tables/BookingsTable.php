@@ -5,9 +5,13 @@ namespace App\Filament\Resources\Bookings\Tables;
 use Filament\Tables\Table;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
+use Filament\Actions\ActionGroup;
+use Filament\Support\Enums\Width;
+use Filament\Actions\DeleteAction;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Tables\Columns\TextColumn;
+use Illuminate\Database\Eloquent\Model;
 use Filament\Tables\Filters\SelectFilter;
 
 class BookingsTable
@@ -16,30 +20,6 @@ class BookingsTable
     {
         return $table
             ->columns([
-                // TextColumn::make('guest.id')
-                //     ->searchable(),
-                // TextColumn::make('room.id')
-                //     ->searchable(),
-                // TextColumn::make('check_in_date')
-                //     ->date()
-                //     ->sortable(),
-                // TextColumn::make('check_out_date')
-                //     ->date()
-                //     ->sortable(),
-                // TextColumn::make('total_price')
-                //     ->numeric()
-                //     ->sortable(),
-                // TextColumn::make('status')
-                //     ->searchable(),
-                // TextColumn::make('created_at')
-                //     ->dateTime()
-                //     ->sortable()
-                //     ->toggleable(isToggledHiddenByDefault: true),
-                // TextColumn::make('updated_at')
-                //     ->dateTime()
-                //     ->sortable()
-                //     ->toggleable(isToggledHiddenByDefault: true),
-
                 // Use dot notation to get related data
                 TextColumn::make('guest.first_name')
                     ->label('Guest')
@@ -66,6 +46,14 @@ class BookingsTable
                 TextColumn::make('total_price')
                     ->money('PHP') // Or 'USD', etc.
                     ->sortable(),
+                TextColumn::make('created_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 SelectFilter::make('status')
@@ -75,9 +63,21 @@ class BookingsTable
                         'cancelled' => 'Cancelled',
                     ]),
             ])
+            ->recordUrl(
+                fn(Model $record): string|null => null,
+            )
+            ->recordAction(null)
             ->recordActions([
-                ViewAction::make(),
-                EditAction::make(),
+                ActionGroup::make([
+                    ViewAction::make()
+                        ->modalWidth(Width::FiveExtraLarge)
+                        ->modalHeading('Booking Details'),
+                    EditAction::make()
+                        // ->slideOver()
+                        ->modalWidth(Width::FiveExtraLarge)
+                        ->modalHeading('Edit Bookings'),
+                    DeleteAction::make(),
+                ])->label('Actions'),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

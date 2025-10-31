@@ -2,8 +2,8 @@
 
 namespace App\Filament\Resources\Bookings\Schemas;
 
-use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Schema;
+use Filament\Infolists\Components\TextEntry;
 
 class BookingInfolist
 {
@@ -11,10 +11,15 @@ class BookingInfolist
     {
         return $schema
             ->components([
-                TextEntry::make('guest.id')
-                    ->label('Guest'),
-                TextEntry::make('room.id')
-                    ->label('Room'),
+                // TextEntry::make('guest.id')
+                //     ->label('Guest'),
+                // TextEntry::make('room.id')
+                //     ->label('Room'),
+                TextEntry::make('guest.first_name')
+                    ->label('Guest Name')
+                    ->formatStateUsing(fn($record) => "{$record->guest->first_name} {$record->guest->last_name}"),
+                TextEntry::make('room.room_number')
+                    ->label('Room Number'),
                 TextEntry::make('check_in_date')
                     ->date(),
                 TextEntry::make('check_out_date')

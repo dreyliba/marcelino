@@ -51,8 +51,8 @@ class GuestResource extends Resource
         return [
             'index' => ListGuests::route('/'),
             'create' => CreateGuest::route('/create'),
-            'view' => ViewGuest::route('/{record}'),
-            'edit' => EditGuest::route('/{record}/edit'),
+            // 'view' => ViewGuest::route('/{record}'),
+            // 'edit' => EditGuest::route('/{record}/edit'),
         ];
     }
 }
