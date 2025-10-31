@@ -6,10 +6,12 @@ use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Pages\Dashboard;
 use App\Livewire\BookingsChart;
+use Filament\Support\Enums\Width;
 use Filament\Support\Colors\Color;
 use Filament\Widgets\AccountWidget;
 use Filament\Widgets\FilamentInfoWidget;
 use Filament\Http\Middleware\Authenticate;
+use Filament\Pages\Enums\SubNavigationPosition;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -32,7 +34,7 @@ class AdminPanelProvider extends PanelProvider
             ->spa()
             ->globalSearch(false)
             ->id('admin')
-            ->path('admin')
+            ->path('app')
             ->login()
             ->colors([
                 'primary' => Color::hex('#f0b100'),
@@ -40,6 +42,7 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->brandLogo(asset('images/marcelinos-logo.png'))
             ->brandLogoHeight('3rem')
+            ->favicon(asset('images/marcelinos-logo.png'))
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
             ->pages([
