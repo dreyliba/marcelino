@@ -2,19 +2,19 @@
 
 namespace App\Filament\Resources\Rooms;
 
-use App\Filament\Resources\Rooms\Pages\CreateRoom;
-use App\Filament\Resources\Rooms\Pages\EditRoom;
-use App\Filament\Resources\Rooms\Pages\ListRooms;
-use App\Filament\Resources\Rooms\Pages\ViewRoom;
-use App\Filament\Resources\Rooms\Schemas\RoomForm;
-use App\Filament\Resources\Rooms\Schemas\RoomInfolist;
-use App\Filament\Resources\Rooms\Tables\RoomsTable;
-use App\Models\Room;
 use BackedEnum;
-use Filament\Resources\Resource;
-use Filament\Schemas\Schema;
-use Filament\Support\Icons\Heroicon;
+use App\Models\Room;
 use Filament\Tables\Table;
+use Filament\Schemas\Schema;
+use Filament\Resources\Resource;
+use Filament\Support\Icons\Heroicon;
+use App\Filament\Resources\Rooms\Pages\EditRoom;
+use App\Filament\Resources\Rooms\Pages\ViewRoom;
+use App\Filament\Resources\Rooms\Pages\ListRooms;
+use App\Filament\Resources\Rooms\Pages\CreateRoom;
+use App\Filament\Resources\Rooms\Schemas\RoomForm;
+use App\Filament\Resources\Rooms\Tables\RoomsTable;
+use App\Filament\Resources\Rooms\Schemas\RoomInfolist;
 
 class RoomResource extends Resource
 {
