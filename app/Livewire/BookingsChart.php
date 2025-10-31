@@ -11,7 +11,7 @@ class BookingsChart extends ChartWidget
 {
     protected ?string $heading = 'Bookings per Month';
 
-    protected ?string $pollingInterval = '30s'; // Optional: Auto refresh every 30 seconds
+    protected ?string $pollingInterval = '30s'; // Auto refresh every 30 seconds
 
     protected function getData(): array
     {
