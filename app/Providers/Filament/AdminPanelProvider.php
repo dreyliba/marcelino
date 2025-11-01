@@ -40,8 +40,10 @@ class AdminPanelProvider extends PanelProvider
                 'primary' => Color::hex('#f0b100'),
                 // 'primary' => Color::Amber,
             ])
-            ->brandLogo(asset('images/marcelinos-logo.png'))
-            ->brandLogoHeight('3rem')
+            // ->brandLogo(asset('images/marcelinos-logo.png'))
+            // ->brandLogoHeight('3rem')
+            // ->brandName('Marcelinos')
+            ->brandLogo(fn() => view('filament.components.brand-logo'))
             ->favicon(asset('images/marcelinos-logo.png'))
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
@@ -64,6 +66,10 @@ class AdminPanelProvider extends PanelProvider
                 BookingWidget::class,
                 BookingsChart::class,
             ])
+            // ->renderHook(
+            //     'panels::sidebar.header',
+            //     fn(): string => view('filament.components.header')->render(),
+            // )
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,
